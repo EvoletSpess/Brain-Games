@@ -10,10 +10,12 @@ public class Even {
         Scanner scanner = new Scanner(System.in);
         String userName = Engine.greetUser(scanner);
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        var roundsNumber = 3;
+        var randomNumberRange = 30;
 
         var i = 0;
-        while (i < 3) {
-            int question = Utils.randomNumbersGenerator(1000);
+        while (i < roundsNumber) {
+            int question = Utils.randomNumbersGenerator(randomNumberRange);
 
             var result = calculateResult(question);
 

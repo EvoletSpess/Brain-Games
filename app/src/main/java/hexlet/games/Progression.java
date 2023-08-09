@@ -12,9 +12,10 @@ public class Progression {
         Scanner scanner = new Scanner(System.in);
         String userName = Engine.greetUser(scanner);
         System.out.println("What number is missing in the progression?");
+        var roundsNumber = 3;
 
         var i = 0;
-        while (i < 3) {
+        while (i < roundsNumber) {
             List<String> progression = generateProgression();
 
             int missingIndex = Utils.randomNumbersGenerator(progression.size());
@@ -36,12 +37,13 @@ public class Progression {
     }
 
     public static List<String> generateProgression() {
-        int randIntOne = Utils.randomNumbersGenerator(10);
-        int randIntTwo = Utils.randomNumbersGenerator(10) + 1;
+        var randomNumberRange = 10;
+        int randIntOne = Utils.randomNumbersGenerator(randomNumberRange);
+        int randIntTwo = Utils.randomNumbersGenerator(randomNumberRange) + 1;
 
         List<String> progression = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < randomNumberRange; i++) {
             progression.add(String.valueOf(randIntOne + randIntTwo * i));
         }
         return progression;

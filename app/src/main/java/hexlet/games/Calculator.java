@@ -10,12 +10,15 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String userName = Engine.greetUser(scanner);
         System.out.println("What is the result of the expression?");
+        var roundsNumber = 3;
+        var randomOperand = 3;
+        var randomNumberRange = 10;
 
         var i = 0;
-        while (i < 3) {
-            int randIntOne = Utils.randomNumbersGenerator(10);
-            int randIntTwo = Utils.randomNumbersGenerator(10);
-            int randIntOperator = Utils.randomNumbersGenerator(3);
+        while (i < roundsNumber) {
+            int randIntOne = Utils.randomNumbersGenerator(randomNumberRange);
+            int randIntTwo = Utils.randomNumbersGenerator(randomNumberRange);
+            int randIntOperator = Utils.randomNumbersGenerator(randomOperand);
             String result = String.valueOf(calculateResult(randIntOperator, randIntOne, randIntTwo));
 
             String question = randIntOne + operandResult(randIntOperator) + randIntTwo;
