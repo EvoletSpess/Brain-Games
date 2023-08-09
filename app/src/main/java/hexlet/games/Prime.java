@@ -10,8 +10,8 @@ public class Prime {
         Scanner scanner = new Scanner(System.in);
         String userName = Engine.greetUser(scanner);
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        var roundsNumber = 3;
-        var randomNumberRange = 100;
+        final int roundsNumber = 3;
+        final int randomNumberRange = 100;
 
         var i = 0;
         while (i < roundsNumber) {

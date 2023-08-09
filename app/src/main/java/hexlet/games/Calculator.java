@@ -10,9 +10,9 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String userName = Engine.greetUser(scanner);
         System.out.println("What is the result of the expression?");
-        var roundsNumber = 3;
-        var randomOperand = 3;
-        var randomNumberRange = 10;
+        final int roundsNumber = 3;
+        final int randomOperand = 3;
+        final int randomNumberRange = 10;
 
         var i = 0;
         while (i < roundsNumber) {

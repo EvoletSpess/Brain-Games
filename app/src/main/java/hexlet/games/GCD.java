@@ -10,8 +10,8 @@ public class GCD {
         Scanner scanner = new Scanner(System.in);
         String userName = Engine.greetUser(scanner);
         System.out.println("Find the greatest common divisor of given numbers.");
-        var roundsNumber = 3;
-        var randomNumberRange = 30;
+        final int roundsNumber = 3;
+        final int randomNumberRange = 30;
 
         var i = 0;
         while (i < roundsNumber) {
