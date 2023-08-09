@@ -1,56 +1,32 @@
 package hexlet.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 import java.util.Scanner;
 
 public class Calculator {
     public static void game() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
-
+        String userName = Engine.greetUser(scanner);
         System.out.println("What is the result of the expression?");
+
         var i = 0;
-        boolean isWinner = true;
         while (i < 3) {
-            Random rand = new Random();
-            int randIntOne = rand.nextInt(10);
-            int randIntTwo = rand.nextInt(10);
-            int randIntOperator = rand.nextInt(3);
-            int result = calculateResult(randIntOperator, randIntOne, randIntTwo);
+            int randIntOne = Utils.randomNumbersGenerator(10);
+            int randIntTwo = Utils.randomNumbersGenerator(10);
+            int randIntOperator = Utils.randomNumbersGenerator(3);
+            String result = String.valueOf(calculateResult(randIntOperator, randIntOne, randIntTwo));
 
-            if (randIntOperator == 0) {
-                System.out.println("Question: " + randIntOne + " + " + randIntTwo);
-            } else if (randIntOperator == 1) {
-                System.out.println("Question: " + randIntOne + " - " + randIntTwo);
-            } else {
-                System.out.println("Question: " + randIntOne + " * " + randIntTwo);
-            }
+            String question = randIntOne + operandResult(randIntOperator) + randIntTwo;
 
-            System.out.print("Your answer: ");
-            String answer = scanner.next();
-            if (answer.equals(String.valueOf(result))) {
-                System.out.println("Correct!");
+            String answer = Engine.questionAndAnswer(question, scanner);
+
+            if (Engine.winOrLose(result, answer, userName)) {
                 i++;
-            } else {
-                System.out.println('\''
-                        + answer
-                        + '\''
-                        + " is wrong answer ;(. Correct answer was "
-                        + '\'' + result
-                        + "'.");
-                System.out.println("Let's try again, " + userName + "!");
-                isWinner = false;
-                scanner.close();
-                break;
             }
         }
-        if (isWinner) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+        System.out.println("Congratulations, " + userName + "!");
         scanner.close();
     }
 
@@ -61,5 +37,15 @@ public class Calculator {
             case 2 -> operandOne * operandTwo;
             default -> throw new IllegalArgumentException("Invalid operator");
         };
+    }
+
+    public static String operandResult(int randIntOperator) {
+        if (randIntOperator == 0) {
+            return " + ";
+        } else if (randIntOperator == 1) {
+            return " - ";
+        } else {
+            return " * ";
+        }
     }
 }
