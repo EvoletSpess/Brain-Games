@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import hexlet.games.Calculator;
 import hexlet.games.Even;
+import hexlet.games.GCD;
 
 public class App {
     public static void main(String[] args) {
@@ -22,6 +23,10 @@ public class App {
                 System.out.println();
                 Calculator.game();
             }
+            case "4" -> {
+                System.out.println();
+                GCD.game();
+            }
             default -> System.out.println("Wrong input. Please try again.");
         }
     }
@@ -32,6 +37,7 @@ public class App {
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
         return scanner.next();
