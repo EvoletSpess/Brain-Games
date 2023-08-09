@@ -14,12 +14,8 @@ public class Even {
         var i = 0;
         while (i < 3) {
             int question = Utils.randomNumbersGenerator(1000);
-            String result;
-            if (question % 2 == 0) {
-                result = "yes";
-            } else {
-                result = "no";
-            }
+
+            var result = calculateResult(question);
 
             String answer = Engine.questionAndAnswer(String.valueOf(question), scanner);
 
@@ -29,5 +25,13 @@ public class Even {
         }
         System.out.println("Congratulations, " + userName + "!");
         scanner.close();
+    }
+
+    public static String calculateResult(int question) {
+        if (question % 2 == 0) {
+            return "yes";
+        } else {
+            return "no";
+        }
     }
 }
