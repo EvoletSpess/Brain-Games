@@ -1,4 +1,4 @@
-package hexlet.games;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
 import hexlet.code.Utils;
@@ -6,31 +6,23 @@ import hexlet.code.Utils;
 import java.util.Scanner;
 
 public class Calculator {
-    public static void game() {
-        Scanner scanner = new Scanner(System.in);
-        String userName = Engine.greetUser(scanner);
-        System.out.println("What is the result of the expression?");
-        final int roundsNumber = 3;
-        final int randomOperand = 3;
-        final int randomNumberRange = 10;
+    public static final int RANDOM_OPERAND_RANGE = 3;
+    public static final int RANDOM_NUMBERS_RANGE = 10;
 
-        var i = 0;
-        while (i < roundsNumber) {
-            int randIntOne = Utils.randomNumbersGenerator(randomNumberRange);
-            int randIntTwo = Utils.randomNumbersGenerator(randomNumberRange);
-            int randIntOperator = Utils.randomNumbersGenerator(randomOperand);
+    public static void game(Scanner scanner) {
+        String userName = Engine.greetUser("What is the result of the expression?", scanner);
+
+        for (var i = 0; true; i++) {
+            int randIntOne = Utils.randomNumbersGenerator(RANDOM_NUMBERS_RANGE) + 1;
+            int randIntTwo = Utils.randomNumbersGenerator(RANDOM_NUMBERS_RANGE) + 1;
+            int randIntOperator = Utils.randomNumbersGenerator(RANDOM_OPERAND_RANGE);
             String result = String.valueOf(calculateResult(randIntOperator, randIntOne, randIntTwo));
 
             String question = randIntOne + operandResult(randIntOperator) + randIntTwo;
 
-            String answer = Engine.questionAndAnswer(question, scanner);
-
-            if (Engine.winOrLose(result, answer, userName)) {
-                i++;
-            }
+            Engine.winOrLose(question, result, userName, scanner, i);
+            i++;
         }
-        System.out.println("Congratulations, " + userName + "!");
-        scanner.close();
     }
 
     public static int calculateResult(int operator, int operandOne, int operandTwo) {

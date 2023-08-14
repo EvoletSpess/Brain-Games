@@ -2,16 +2,16 @@ package hexlet.code;
 
 import java.util.Scanner;
 
-import hexlet.games.Calculator;
-import hexlet.games.Even;
-import hexlet.games.GCD;
-import hexlet.games.Prime;
-import hexlet.games.Progression;
+import hexlet.code.games.Calculator;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 public class App {
     public static void main(String[] args) {
-        String choice = mainMenu();
         Scanner scanner = new Scanner(System.in);
+        String choice = mainMenu(scanner);
 
         switch (choice) {
             case "0" -> {
@@ -19,30 +19,28 @@ public class App {
             case "1" -> Engine.greetUser(scanner);
             case "2" -> {
                 System.out.println();
-                Even.game();
+                Even.game(scanner);
             }
             case "3" -> {
                 System.out.println();
-                Calculator.game();
+                Calculator.game(scanner);
             }
             case "4" -> {
                 System.out.println();
-                GCD.game();
+                GCD.game(scanner);
             }
             case "5" -> {
                 System.out.println();
-                Progression.game();
+                Progression.game(scanner);
             }
             case "6" -> {
                 System.out.println();
-                Prime.game();
+                Prime.game(scanner);
             }
             default -> System.out.println("Wrong input. Please try again.");
         }
     }
-    public static String mainMenu() {
-        Scanner scanner = new Scanner(System.in);
-
+    public static String mainMenu(Scanner scanner) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
