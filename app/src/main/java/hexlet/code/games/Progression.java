@@ -26,7 +26,7 @@ public class Progression {
 
             String question = String.join(" ", progression);
 
-            Engine.winOrLose(question, result, userName, scanner, i);
+            Engine.winOrLose(question, result, userName, i);
             i++;
         }
     }

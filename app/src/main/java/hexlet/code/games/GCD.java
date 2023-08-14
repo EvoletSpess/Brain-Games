@@ -19,7 +19,7 @@ public class GCD {
 
             String question = randIntOne + " " + randIntTwo;
 
-            Engine.winOrLose(question, result, userName, scanner, i);
+            Engine.winOrLose(question, result, userName, i);
             i++;
         }
     }

@@ -21,7 +21,8 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
     }
 
-    public static void winOrLose(String question, String result, String userName, Scanner scanner, int i) {
+    public static void winOrLose(String question, String result, String userName, int i) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Question: " + question);
         System.out.print("Your answer: ");
         String answer = scanner.next();

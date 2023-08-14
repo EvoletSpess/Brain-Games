@@ -22,7 +22,7 @@ public class Prime {
                 result = "no";
             }
 
-            Engine.winOrLose(String.valueOf(question), result, userName, scanner, i);
+            Engine.winOrLose(String.valueOf(question), result, userName, i);
             i++;
         }
     }

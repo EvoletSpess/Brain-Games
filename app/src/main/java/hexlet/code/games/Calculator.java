@@ -20,7 +20,7 @@ public class Calculator {
 
             String question = randIntOne + operandResult(randIntOperator) + randIntTwo;
 
-            Engine.winOrLose(question, result, userName, scanner, i);
+            Engine.winOrLose(question, result, userName, i);
             i++;
         }
     }
