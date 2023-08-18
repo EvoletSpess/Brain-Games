@@ -3,25 +3,22 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
-
 public class GCD {
     public static final int RANDOM_NUMBER_RANGE = 30;
 
-    public static void game(Scanner scanner) {
-        String userName = Engine.greetUser("Find the greatest common divisor of given numbers.", scanner);
+    public static void game() {
+        int rowCount = Engine.ROUNDS_NUMBER;
+        int columnCount = 2;
+        String gameDescription = "Find the greatest common divisor of given numbers.";
+        String[][] answersAndQuestion = new String[rowCount][columnCount];
 
-        for (var i = 0; true; i++) {
+        for (String[] element : answersAndQuestion) {
             int randIntOne = Utils.randomNumbersGenerator(RANDOM_NUMBER_RANGE) + 1;
             int randIntTwo = Utils.randomNumbersGenerator(RANDOM_NUMBER_RANGE) + 1;
-
-            String result = String.valueOf(calculateGcd(randIntOne, randIntTwo));
-
-            String question = randIntOne + " " + randIntTwo;
-
-            Engine.winOrLose(question, result, userName, i);
-            i++;
+            element[0] = randIntOne + " " + randIntTwo;
+            element[1] = String.valueOf(calculateGcd(randIntOne, randIntTwo));
         }
+        Engine.winOrLose(answersAndQuestion, gameDescription);
     }
 
     public static int calculateGcd(int a, int b) {

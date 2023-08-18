@@ -14,35 +14,39 @@ public class Engine {
         return userName;
     }
 
-    public static void greetUser(Scanner scanner) {
+    public static void greetUser() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
+        System.exit(0);
     }
 
-    public static void winOrLose(String question, String result, String userName, int i) {
+    public static void winOrLose(String[][] answersAndQuestions, String gameDescription) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Question: " + question);
-        System.out.print("Your answer: ");
-        String answer = scanner.next();
+        String userName = greetUser(gameDescription, scanner);
 
-        if (answer.equals(result)) {
-            System.out.println("Correct!");
-            if (i == ROUNDS_NUMBER + 1) {
-                System.out.println("Congratulations, " + userName + "!");
+        for (String[] element : answersAndQuestions) {
+            System.out.println("Question: " + element[0]);
+            System.out.print("Your answer: ");
+            String answer = scanner.next();
+
+            if (answer.equals(element[1])) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println('\''
+                        + answer
+                        + '\''
+                        + " is wrong answer ;(. Correct answer was "
+                        + '\''
+                        + element[1]
+                        + "'.");
+                System.out.println("Let's try again, " + userName + "!");
                 System.exit(0);
             }
-        } else {
-            System.out.println('\''
-                    + answer
-                    + '\''
-                    + " is wrong answer ;(. Correct answer was "
-                    + '\''
-                    + result
-                    + "'.");
-            System.out.println("Let's try again, " + userName + "!");
-            System.exit(0);
         }
+        System.out.println("Congratulations, " + userName + "!");
+        System.exit(0);
     }
 }

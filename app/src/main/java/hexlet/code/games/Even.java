@@ -3,28 +3,26 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
-
 public class Even {
     public static final int RANDOM_NUMBER_RANGE = 30;
 
-    public static void game(Scanner scanner) {
-        String userName = Engine.greetUser("Answer 'yes' if the number is even, otherwise answer 'no'.", scanner);
+    public static void game() {
+        int rowCount = Engine.ROUNDS_NUMBER;
+        int columnCount = 2;
+        String gameDescription = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[][] answersAndQuestion = new String[rowCount][columnCount];
 
-        for (var i = 0; true; i++) {
+        for (String[] element : answersAndQuestion) {
             int question = Utils.randomNumbersGenerator(RANDOM_NUMBER_RANGE) + 1;
-
-            String result;
+            element[0] = String.valueOf(question);
 
             if (isEven(question)) {
-                result = "yes";
+                element[1] = "yes";
             } else {
-                result = "no";
+                element[1] = "no";
             }
-
-            Engine.winOrLose(String.valueOf(question), result, userName, i);
-            i++;
         }
+        Engine.winOrLose(answersAndQuestion, gameDescription);
     }
 
     public static boolean isEven(int number) {

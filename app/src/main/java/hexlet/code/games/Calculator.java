@@ -3,26 +3,25 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
-
 public class Calculator {
     public static final int RANDOM_OPERAND_RANGE = 3;
     public static final int RANDOM_NUMBERS_RANGE = 10;
 
-    public static void game(Scanner scanner) {
-        String userName = Engine.greetUser("What is the result of the expression?", scanner);
+    public static void game() {
+        int rowCount = Engine.ROUNDS_NUMBER;
+        int columnCount = 2;
+        String gameDescription = "What is the result of the expression?";
+        String[][] answersAndQuestion = new String[rowCount][columnCount];
 
-        for (var i = 0; true; i++) {
+        for (String[] element : answersAndQuestion) {
             int randIntOne = Utils.randomNumbersGenerator(RANDOM_NUMBERS_RANGE) + 1;
             int randIntTwo = Utils.randomNumbersGenerator(RANDOM_NUMBERS_RANGE) + 1;
             int randIntOperator = Utils.randomNumbersGenerator(RANDOM_OPERAND_RANGE);
-            String result = String.valueOf(calculateResult(randIntOperator, randIntOne, randIntTwo));
 
-            String question = randIntOne + operandResult(randIntOperator) + randIntTwo;
-
-            Engine.winOrLose(question, result, userName, i);
-            i++;
+            element[0] = randIntOne + operandResult(randIntOperator) + randIntTwo;
+            element[1] = String.valueOf(calculateResult(randIntOperator, randIntOne, randIntTwo));
         }
+        Engine.winOrLose(answersAndQuestion, gameDescription);
     }
 
     public static int calculateResult(int operator, int operandOne, int operandTwo) {

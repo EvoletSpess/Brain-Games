@@ -16,26 +16,26 @@ public class App {
         switch (choice) {
             case "0" -> {
             }
-            case "1" -> Engine.greetUser(scanner);
+            case "1" -> Engine.greetUser();
             case "2" -> {
                 System.out.println();
-                Even.game(scanner);
+                Even.game();
             }
             case "3" -> {
                 System.out.println();
-                Calculator.game(scanner);
+                Calculator.game();
             }
             case "4" -> {
                 System.out.println();
-                GCD.game(scanner);
+                GCD.game();
             }
             case "5" -> {
                 System.out.println();
-                Progression.game(scanner);
+                Progression.game();
             }
             case "6" -> {
                 System.out.println();
-                Prime.game(scanner);
+                Prime.game();
             }
             default -> System.out.println("Wrong input. Please try again.");
         }
