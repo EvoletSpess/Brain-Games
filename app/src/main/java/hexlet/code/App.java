@@ -16,7 +16,13 @@ public class App {
         switch (choice) {
             case "0" -> {
             }
-            case "1" -> Engine.greetUser();
+            case "1" -> {
+                System.out.println("Welcome to the Brain Games!");
+                System.out.print("May I have your name? ");
+                String userName = scanner.next();
+                System.out.println("Hello, " + userName + "!");
+                System.exit(0);
+            }
             case "2" -> {
                 System.out.println();
                 Even.game();

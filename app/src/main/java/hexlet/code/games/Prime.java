@@ -4,28 +4,23 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
-    public static final int RANDOM_NUMBER_RANGE = 100;
+    private static final int RANDOM_NUMBER_RANGE = 100;
+    private static final int NUM_COLUMNS = 2;
+    private static final int NUM_ROWS = Engine.ROUNDS_NUMBER;
+    private static final String GAME_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void game() {
-        int rowCount = Engine.ROUNDS_NUMBER;
-        int columnCount = 2;
-        String gameDescription = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[][] answersAndQuestion = new String[rowCount][columnCount];
+        String[][] answersAndQuestion = new String[NUM_ROWS][NUM_COLUMNS];
 
         for (String[] element : answersAndQuestion) {
             int question = Utils.randomNumbersGenerator(RANDOM_NUMBER_RANGE) + 1;
             element[0] = String.valueOf(question);
-
-            if (isPrime(question)) {
-                element[1] = "yes";
-            } else {
-                element[1] = "no";
-            }
+            element[1] = isPrime(question) ? "yes" : "no";
         }
-        Engine.winOrLose(answersAndQuestion, gameDescription);
+        Engine.startGame(answersAndQuestion, GAME_DESCRIPTION);
     }
 
-    public static boolean isPrime(int num) {
+    private static boolean isPrime(int num) {
         for (int i = 2; i <= num / 2; ++i) {
             if (num % i == 0) {
                 return false;

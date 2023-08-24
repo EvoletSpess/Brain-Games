@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Engine {
     public static final int ROUNDS_NUMBER = 3;
 
-    public static String greetUser(String gameDescription, Scanner scanner) {
+    private static String greetUser(String gameDescription, Scanner scanner) {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         String userName = scanner.next();
@@ -14,16 +14,7 @@ public class Engine {
         return userName;
     }
 
-    public static void greetUser() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
-        System.exit(0);
-    }
-
-    public static void winOrLose(String[][] answersAndQuestions, String gameDescription) {
+    public static void startGame(String[][] answersAndQuestions, String gameDescription) {
         Scanner scanner = new Scanner(System.in);
         String userName = greetUser(gameDescription, scanner);
 

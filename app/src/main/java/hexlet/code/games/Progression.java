@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Progression {
-    public static final int PROGRESSION_RANGE = 10;
-    public static final int PROGRESSION_START = 2;
-    public static final int PROGRESSION_STEP = 2;
+    private static final int NUM_COLUMNS = 2;
+    private static final int NUM_ROWS = Engine.ROUNDS_NUMBER;
+    private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
+    private static final int PROGRESSION_RANGE = 10;
+    private static final int PROGRESSION_START = 2;
+    private static final int PROGRESSION_STEP = 2;
 
     public static void game() {
-        int rowCount = Engine.ROUNDS_NUMBER;
-        int columnCount = 2;
-        String gameDescription = "What number is missing in the progression?";
-        String[][] answersAndQuestion = new String[rowCount][columnCount];
+        String[][] answersAndQuestion = new String[NUM_ROWS][NUM_COLUMNS];
 
         for (String[] element : answersAndQuestion) {
             List<String> progression = generateProgression(PROGRESSION_RANGE, PROGRESSION_START, PROGRESSION_STEP);
@@ -28,10 +28,10 @@ public class Progression {
 
             element[0] = String.join(" ", progression);
         }
-        Engine.winOrLose(answersAndQuestion, gameDescription);
+        Engine.startGame(answersAndQuestion, GAME_DESCRIPTION);
     }
 
-    public static List<String> generateProgression(int progressionRange, int progressionStart, int progressionStep) {
+    private static List<String> generateProgression(int progressionRange, int progressionStart, int progressionStep) {
         List<String> progression = new ArrayList<>();
 
         for (int i = 0; i < progressionRange; i++) {
