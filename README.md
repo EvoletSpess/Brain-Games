@@ -1,5 +1,4 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/EvoletSpess/java-project-61/workflows/hexlet-check/badge.svg)](https://github.com/EvoletSpess/java-project-61/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b66130f5b4da06e01101/maintainability)](https://codeclimate.com/github/EvoletSpess/java-project-61/maintainability)
 
 The BRAIN GAMES are a set of five CHALLENGING games built to test your intellect. Are you smart? After three correct answers, you will find out! Incorrect results end and exit the game. 
